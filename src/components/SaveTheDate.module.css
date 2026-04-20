@@ -1,0 +1,130 @@
+.saveTheDateSection {
+  position: relative;
+  min-height: 100dvh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1rem;
+  overflow: hidden;
+}
+
+.backgroundLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-overlay-dark);
+  z-index: -1;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.title {
+  font-family: var(--font-accent), cursive;
+  font-size: 3rem;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 4rem;
+  }
+}
+
+.calendarCard {
+  margin: 1rem auto;
+  color: white;
+  transform: scale(0.9);
+  transform-origin: top center;
+}
+
+.monthTitle {
+  font-family: var(--font-heading), serif;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Calendar Grid */
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+  font-family: var(--font-body), serif;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .calendarGrid {
+    gap: 1rem;
+    font-size: 1.4rem;
+  }
+}
+
+.weekday {
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.day {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.highlightDay {
+  color: white;
+  font-weight: bold;
+}
+
+.highlightHeart {
+  position: absolute;
+  color: var(--color-accent);
+  animation: pulse 1.5s infinite ease-in-out;
+  z-index: -1;
+}
+
+.highlightRing {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.conclusion {
+  margin-top: 2rem;
+  color: white;
+  font-family: var(--font-heading), serif;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.conclusion span {
+  display: block;
+}

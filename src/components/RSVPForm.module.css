@@ -1,0 +1,148 @@
+.rsvpSection {
+  background-color: var(--color-bg);
+  padding: 1rem;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-family: var(--font-accent), cursive;
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .sectionTitle {
+    font-size: 3.5rem;
+  }
+}
+
+.subtitle {
+  font-family: var(--font-body), serif;
+  font-size: 1.2rem;
+  color: var(--color-text);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.formCard {
+  background: white;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(139, 111, 78, 0.1);
+  text-align: left;
+}
+
+.inputGroup {
+  margin-bottom: 0.75rem;
+}
+
+.inputGroup label {
+  display: block;
+  font-family: var(--font-heading), serif;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.inputField {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--color-muted);
+  border-radius: 8px;
+  font-family: var(--font-body), serif;
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: border-color 0.3s ease;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(139, 111, 78, 0.1);
+}
+
+textarea.inputField {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-family: var(--font-heading), serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background-color: var(--color-text);
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.submitBtn:disabled {
+  background-color: var(--color-muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--color-primary);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.successMessage h3 {
+  font-family: var(--font-heading), serif;
+  font-size: 1.8rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.successMessage p {
+  font-family: var(--font-body), serif;
+  font-size: 1.2rem;
+  color: var(--color-text);
+}
+
+.errorMessage {
+  color: #ef4444;
+  font-family: var(--font-body), serif;
+  font-size: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}

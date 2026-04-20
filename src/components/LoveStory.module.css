@@ -1,0 +1,324 @@
+/* ══════════════════════════════════════════════════
+   LOVE STORY — Editorial Cinematic Layout
+   Tối ưu cho bộ ảnh PORTRAIT (dọc 2:3)
+   ══════════════════════════════════════════════════ */
+
+.storySection {
+  background-color: var(--color-bg);
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1000px;
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1100px;
+  }
+}
+
+/* ── Section Header ── */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-accent), cursive;
+  font-size: 3.5rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .sectionTitle {
+    font-size: 4.5rem;
+  }
+}
+
+/* ══════════════════════════════════════
+   SIGNATURE VIDEO — Portrait 9:16
+   ══════════════════════════════════════ */
+.signatureVideo {
+  position: relative;
+  width: 60%;          /* Không full-width vì video dọc */
+  max-width: 400px;
+  margin: 0 auto 3rem;
+  aspect-ratio: 9/16;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+.signatureMedia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.signatureOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 2rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.1) 35%,
+    transparent 100%
+  );
+}
+
+.signatureText {
+  font-family: var(--font-accent), cursive;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .signatureVideo {
+    width: 35%;
+    max-width: 380px;
+    margin-bottom: 4rem;
+  }
+  .signatureText {
+    font-size: 1.6rem;
+  }
+}
+
+/* ══════════════════════════════════════
+   TEXT INTERSTITIAL — Dẫn truyện
+   ══════════════════════════════════════ */
+.textInterstitial {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.textIcon {
+  color: var(--color-accent);
+  font-size: 1rem;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.storyText {
+  font-family: var(--font-body), serif;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--color-text);
+  font-style: italic;
+  max-width: 480px;
+}
+
+@media (min-width: 768px) {
+  .textInterstitial {
+    padding: 4rem 2rem;
+  }
+  .storyText {
+    font-size: 1.25rem;
+  }
+}
+
+/* ══════════════════════════════════════
+   CHAPTER & BLOCKS
+   ══════════════════════════════════════ */
+.chapter {
+  margin-bottom: 1rem;
+}
+
+.blocksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* ── Base Image Block ── */
+.imageBlock {
+  display: grid;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.imageItem {
+  position: relative; /* Bắt buộc để Next.js Image fill hoạt động */
+  overflow: hidden;
+  background-color: #f0ebe5;
+}
+
+.storyMedia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.imageItem:hover .storyMedia {
+  transform: scale(1.03);
+}
+
+/* ══════════════════════════════════════
+   LAYOUT VARIANTS — Tối ưu cho ảnh DỌC
+   ══════════════════════════════════════ */
+
+/* 1. PORTRAIT HERO — 1 ảnh dọc lớn, căn giữa */
+.layout_portraitHero {
+  grid-template-columns: 1fr;
+  max-width: 55%;
+  margin: 0 auto;
+}
+.layout_portraitHero .imageItem {
+  aspect-ratio: 2/3;
+}
+
+/* 2. LANDSCAPE HERO — 1 ảnh ngang full-width */
+.layout_landscapeHero {
+  grid-template-columns: 1fr;
+}
+.layout_landscapeHero .imageItem {
+  aspect-ratio: 3/2;
+}
+
+/* 3. PORTRAIT DUO — 2 ảnh dọc cạnh nhau */
+.layout_portraitDuo {
+  grid-template-columns: 1fr 1fr;
+}
+.layout_portraitDuo .imageItem {
+  aspect-ratio: 2/3;
+}
+
+/* 4. PORTRAIT TRIO — 3 ảnh dọc cạnh nhau */
+.layout_portraitTrio {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.layout_portraitTrio .imageItem {
+  aspect-ratio: 2/3;
+}
+
+/* 5. ASYM TRIO — 1 ảnh dọc to (trái) + 2 ảnh nhỏ xếp chồng (phải) */
+.layout_asymTrio {
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  aspect-ratio: 2/3; /* Container có chiều cao xác định để grid rows resolve */
+}
+.layout_asymTrio .imageItem:first-child {
+  grid-row: span 2; /* Ảnh lớn chiếm cả 2 hàng */
+}
+.layout_asymTrio .imageItem {
+  aspect-ratio: auto; /* Kế thừa từ container */
+  min-height: 0; /* Xóa fallback để tránh override */
+}
+
+/* 6. FILM STRIP — Cắt ảnh dọc thành dải phim ngang nhưng không quá nhỏ */
+.layout_filmStrip {
+  grid-template-columns: 1fr 1fr;
+}
+.layout_filmStrip .imageItem {
+  aspect-ratio: 4/3; /* Không quá rộng để ảnh vẫn đủ chiều cao hiển thị */
+}
+
+/* 7. GRID 4 — 2×2 */
+.layout_grid4 {
+  grid-template-columns: 1fr 1fr;
+}
+.layout_grid4 .imageItem {
+  aspect-ratio: 3/4;
+}
+
+/* ══════════════════════════════════════
+   DESKTOP REFINEMENTS
+   ══════════════════════════════════════ */
+@media (min-width: 768px) {
+  .blocksContainer {
+    gap: 0.5rem;
+  }
+
+  .imageBlock {
+    gap: 0.5rem;
+  }
+
+  /* Portrait hero nhỏ hơn chút trên desktop */
+  .layout_portraitHero {
+    max-width: 45%;
+  }
+
+  /* Landscape hero giữ tỉ lệ 3:2 */
+  .layout_landscapeHero .imageItem {
+    aspect-ratio: 3/2;
+  }
+
+  /* Portrait trio - 3 ảnh dọc đẹp nhất trên desktop */
+  .layout_portraitTrio .imageItem {
+    aspect-ratio: 2/3;
+  }
+
+  /* Asym trio cân đối trên desktop */
+  .layout_asymTrio {
+    grid-template-columns: 1.4fr 1fr;
+    aspect-ratio: 4/3; /* Trên desktop rộng hơn */
+  }
+
+  /* Film strip trên desktop rộng hơn nhưng vẫn giữ đủ chiều cao */
+  .layout_filmStrip .imageItem {
+    aspect-ratio: 3/2;
+  }
+
+  /* Grid4 tỉ lệ đẹp */
+  .layout_grid4 .imageItem {
+    aspect-ratio: 3/4;
+  }
+}
+
+/* ══════════════════════════════════════
+   MOBILE — Stack khi cần
+   ══════════════════════════════════════ */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .textInterstitial {
+    padding: 2rem 0.8rem;
+  }
+
+  .storyText {
+    font-size: 0.95rem;
+  }
+
+  .signatureVideo {
+    width: 70%;
+  }
+
+  /* Portrait hero to hơn trên mobile */
+  .layout_portraitHero {
+    max-width: 75%;
+  }
+
+  /* Trio có thể chật trên mobile nhỏ, giữ 3 cột nhưng nhỏ hơn */
+  .layout_portraitTrio .imageItem {
+    aspect-ratio: 3/5;
+  }
+}
