@@ -1,32 +1,16 @@
-import fs from 'fs';
-import path from 'path';
 import WeddingPage from '@/components/WeddingPage';
 
 export default function Home() {
-  const heroItems = scanImageDir('hero');
-  const storyItems = scanImageDir('story');
-  const calendarBg = scanImageDir('calendar-bg');
-  const thankYouBg = scanImageDir('thankyou');
+  const heroItems = ['/images/hero/01.mp4', '/images/hero/02.jpg', '/images/hero/03.jpg', '/images/hero/04.jpg', '/images/hero/05.jpg'];
+  const storyItems = Array.from({ length: 24 }, (_, i) => `/images/story/${String(i + 1).padStart(2, '0')}.jpg`);
   
   return (
     <WeddingPage
       guestName={null}
       heroItems={heroItems}
       storyItems={storyItems}
-      calendarBg={calendarBg[0] || null}
-      thankYouBg={thankYouBg[0] || null}
+      calendarBg="/images/calendar-bg/bg.jpg"
+      thankYouBg="/images/thankyou/bg.jpg"
     />
   );
-}
-
-function scanImageDir(folder: string): string[] {
-  const dir = path.join(process.cwd(), `public/images/${folder}`);
-  try {
-    return fs.readdirSync(dir)
-      .filter(f => /\.(jpg|jpeg|png|webp|mp4)$/i.test(f))
-      .sort()
-      .map(f => `/images/${folder}/${f}`);
-  } catch { 
-    return []; 
-  }
 }
