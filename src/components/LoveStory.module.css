@@ -237,7 +237,11 @@
   grid-template-columns: 1fr 1fr;
 }
 .layout_filmStrip .imageItem {
-  aspect-ratio: 4/3; /* Không quá rộng để ảnh vẫn đủ chiều cao hiển thị */
+  aspect-ratio: 4/3; /* Dạng crop ngang nghệ thuật */
+}
+/* Focus lên phần trên của ảnh để tránh mất đầu / khuôn mặt */
+.layout_filmStrip .storyMedia {
+  object-position: center 15%; 
 }
 
 /* 7. GRID 4 — 2×2 */
@@ -281,7 +285,7 @@
     aspect-ratio: 4/3; /* Trên desktop rộng hơn */
   }
 
-  /* Film strip trên desktop rộng hơn nhưng vẫn giữ đủ chiều cao */
+  /* Film strip giữ cảm giác widescreen nghệ thuật trên desktop */
   .layout_filmStrip .imageItem {
     aspect-ratio: 3/2;
   }

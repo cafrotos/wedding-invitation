@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Hero.module.css';
 import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
@@ -11,18 +11,42 @@ interface HeroProps {
 
 export default function Hero({ items }: HeroProps) {
   const [bgIndex, setBgIndex] = useState(0);
+  const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
   useEffect(() => {
-    if (!items || items.length <= 1) return;
+    if (!items || items.length === 0) return;
 
-    // Filter images from items, videos will be handled separately if needed
-    // In this basic version, we will just cycle through all items as images or simple video
-    const interval = setInterval(() => {
-      setBgIndex((prevIndex) => (prevIndex + 1) % items.length);
-    }, 4000);
+    // Reset loop
+    items.forEach((item, index) => {
+      const isVideo = item.toLowerCase().endsWith('.mp4');
+      if (isVideo) {
+        const vid = videoRefs.current[index];
+        if (vid) {
+          if (index === bgIndex) {
+            vid.currentTime = 0;
+            vid.play().catch(() => {
+                // Ignore play errors (e.g. autoplay prevention)
+            });
+          } else {
+            vid.pause();
+          }
+        }
+      }
+    });
 
-    return () => clearInterval(interval);
-  }, [items]);
+    if (items.length <= 1) return;
+
+    const currentItem = items[bgIndex];
+    const isVideo = currentItem?.toLowerCase().endsWith('.mp4');
+
+    // Chuyển ảnh sau 3s, nếu là video thì để event onEnded lo
+    if (!isVideo) {
+      const timeout = setTimeout(() => {
+        setBgIndex((prevIndex) => (prevIndex + 1) % items.length);
+      }, 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [bgIndex, items]);
 
   if (!items || items.length === 0) return null;
 
@@ -34,12 +58,15 @@ export default function Hero({ items }: HeroProps) {
         return isVideo ? (
           <video
             key={item}
+            ref={(el) => {
+                if (el) {
+                    videoRefs.current[index] = el;
+                }
+            }}
             src={item}
             className={`${styles.backgroundLayer} ${index === bgIndex ? styles.active : ''}`}
-            autoPlay
             muted
             playsInline
-            loop
             preload="auto"
             onEnded={() => setBgIndex((index + 1) % items.length)}
           />
