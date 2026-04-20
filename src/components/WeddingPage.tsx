@@ -1,6 +1,7 @@
 "use client";
 
 import Hero from '@/components/Hero';
+import Preloader from '@/components/Preloader';
 import Invitation from '@/components/Invitation';
 import LoveStory from '@/components/LoveStory';
 import SaveTheDate from '@/components/SaveTheDate';
@@ -19,8 +20,10 @@ interface WeddingPageProps {
 
 export default function WeddingPage(props: WeddingPageProps) {
   return (
-    <main className="snap-container">
-      <Hero items={props.heroItems} />
+    <>
+      <Preloader />
+      <main className="snap-container">
+        <Hero items={props.heroItems} />
       <Invitation guestName={props.guestName} />
       <LoveStory items={props.storyItems} />
       <SaveTheDate calendarBg={props.calendarBg} />
@@ -29,5 +32,6 @@ export default function WeddingPage(props: WeddingPageProps) {
       <WeddingGift />
       <ThankYou bgImage={props.thankYouBg} />
     </main>
+    </>
   );
 }

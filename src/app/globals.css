@@ -1,10 +1,15 @@
 :root {
   /* Colors */
-  --color-primary: #8B6F4E;        /* Warm Bronze */
-  --color-accent: #D4A574;         /* Champagne Gold */
-  --color-bg: #FDF8F3;             /* Ivory Cream */
-  --color-text: #3D2E1F;           /* Dark Espresso */
-  --color-muted: #B8A89A;          /* Soft Taupe */
+  --color-primary: #8B6F4E;
+  /* Warm Bronze */
+  --color-accent: #D4A574;
+  /* Champagne Gold */
+  --color-bg: #FDF8F3;
+  /* Ivory Cream */
+  --color-text: #3D2E1F;
+  /* Dark Espresso */
+  --color-muted: #B8A89A;
+  /* Soft Taupe */
   --color-white: #FFFFFF;
   --color-overlay-dark: rgba(0, 0, 0, 0.7);
   --color-glass: rgba(255, 255, 255, 0.12);
@@ -12,8 +17,19 @@
 }
 
 /* ===== Reset & Base ===== */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { height: 100%; scroll-behavior: smooth; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100%;
   background: var(--color-bg);
@@ -29,7 +45,11 @@ body {
   scroll-snap-type: y mandatory;
   scrollbar-width: none;
 }
-.snap-container::-webkit-scrollbar { display: none; }
+
+.snap-container::-webkit-scrollbar {
+  display: none;
+}
+
 .snap-section {
   scroll-snap-align: start;
   min-height: 100dvh;
@@ -56,9 +76,21 @@ body {
 
 /* Desktop: disable snap */
 @media (min-width: 768px) {
-  .snap-container { scroll-snap-type: none; height: auto; overflow-y: auto; }
-  .snap-section { scroll-snap-align: none; min-height: 100vh; height: auto; }
-  .auto-height-section { min-height: auto; }
+  .snap-container {
+    scroll-snap-type: none;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .snap-section {
+    scroll-snap-align: none;
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .auto-height-section {
+    min-height: auto;
+  }
 }
 
 /* ===== Glassmorphism ===== */
@@ -72,8 +104,13 @@ body {
 }
 
 /* ===== Typography Utilities ===== */
-.font-heading { font-family: var(--font-heading), serif; }
-.font-accent { font-family: var(--font-accent), cursive; }
+.font-heading {
+  font-family: var(--font-heading), serif;
+}
+
+.font-accent {
+  font-family: var(--font-accent), cursive;
+}
 
 /* ===== Custom Styles ===== */
 .goldDivider {
@@ -86,25 +123,63 @@ body {
 
 /* ===== Animations ===== */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
+
 @keyframes floatHeart {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-80px) scale(0.5); opacity: 0; }
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-80px) scale(0.5);
+    opacity: 0;
+  }
 }
+
 @keyframes spinRing {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
+
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Utilities for intersection observer */
@@ -113,6 +188,7 @@ body {
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
+
 .animate-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);

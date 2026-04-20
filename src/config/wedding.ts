@@ -53,7 +53,7 @@ export const weddingConfig = {
       imageCount: 8,
     },
     {
-      text: "Chúng mình lớn lên cùng nhau — qua những chuyến đi xa, những bữa cơm bình dị, và cả những lần cãi vã rồi lại ôm nhau thật chặt.",
+      text: "Chúng mình trưởng thành cùng nhau — qua những chuyến đi xa, những bữa cơm bình dị, và cả những lần cãi vã rồi lại ôm nhau thật chặt.",
       layout: "editorial" as const, // 7 ảnh (09-15, tất cả dọc)
       imageCount: 7,
     },

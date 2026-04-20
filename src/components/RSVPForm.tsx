@@ -13,7 +13,7 @@ type Status = "idle" | "loading" | "success" | "error";
 
 export default function RSVPForm({ guestName }: RSVPFormProps) {
   const { ref, isVisible } = useIntersectionObserver(0.2);
-  
+
   const [status, setStatus] = useState<Status>("idle");
   const [formData, setFormData] = useState({
     name: guestName || "",
@@ -30,13 +30,13 @@ export default function RSVPForm({ guestName }: RSVPFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Auto-reject bots using honeypot
     if (formData.website) {
       setStatus("success");
       return;
     }
-    
+
     setStatus("loading");
     try {
       const response = await fetch("/api/rsvp", {
@@ -63,7 +63,9 @@ export default function RSVPForm({ guestName }: RSVPFormProps) {
         <div className={`animate-on-scroll ${isVisible ? 'visible' : ''}`}>
           <h2 className={styles.sectionTitle}>Xác Nhận Tham Dự</h2>
           <div className="goldDivider">─── ♥ ───</div>
-          <p className={styles.subtitle}>"Chúng mình rất mong được đón tiếp bạn trong ngày vui!"</p>
+          <p className={styles.subtitle}>
+            &quot;Chúng mình rất mong được đón tiếp <span className={styles.guestHighlight}>{guestName || "bạn"}</span> trong ngày vui!&quot;
+          </p>
         </div>
 
         <div className={`animate-on-scroll ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.2s' }}>
@@ -77,25 +79,25 @@ export default function RSVPForm({ guestName }: RSVPFormProps) {
             <div className={styles.formCard}>
               <form onSubmit={handleSubmit}>
                 {/* Honeypot field - hidden */}
-                <input 
-                  type="text" 
-                  name="website" 
+                <input
+                  type="text"
+                  name="website"
                   value={formData.website}
-                  onChange={handleChange} 
-                  style={{ display: 'none' }} 
-                  tabIndex={-1} 
-                  autoComplete="off" 
+                  onChange={handleChange}
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  autoComplete="off"
                 />
 
                 {/* Name - only if not in URL */}
                 {!guestName && (
                   <div className={styles.inputGroup}>
                     <label>Tên bạn *</label>
-                    <input 
-                      type="text" 
-                      name="name" 
-                      required 
-                      value={formData.name} 
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
                       onChange={handleChange}
                       className={styles.inputField}
                       placeholder="Nhập tên của bạn"
@@ -105,9 +107,9 @@ export default function RSVPForm({ guestName }: RSVPFormProps) {
 
                 <div className={styles.inputGroup}>
                   <label>Xác nhận tham dự *</label>
-                  <select 
-                    name="attending" 
-                    value={formData.attending} 
+                  <select
+                    name="attending"
+                    value={formData.attending}
                     onChange={handleChange}
                     className={styles.inputField}
                   >
@@ -118,12 +120,12 @@ export default function RSVPForm({ guestName }: RSVPFormProps) {
 
                 <div className={styles.inputGroup}>
                   <label>Số người đi cùng</label>
-                  <input 
-                    type="number" 
-                    name="guests" 
-                    min="1" 
+                  <input
+                    type="number"
+                    name="guests"
+                    min="1"
                     max="10"
-                    value={formData.guests} 
+                    value={formData.guests}
                     onChange={handleChange}
                     disabled={formData.attending === "no"}
                     className={styles.inputField}
@@ -132,10 +134,10 @@ export default function RSVPForm({ guestName }: RSVPFormProps) {
 
                 <div className={styles.inputGroup}>
                   <label>Lời chúc</label>
-                  <textarea 
-                    name="message" 
+                  <textarea
+                    name="message"
                     rows={4}
-                    value={formData.message} 
+                    value={formData.message}
                     onChange={handleChange}
                     placeholder="Gửi lời chúc đến cô dâu chú rể nhé..."
                     className={styles.inputField}

@@ -36,6 +36,14 @@
   font-style: italic;
 }
 
+.guestHighlight {
+  color: var(--color-accent);
+  font-family: var(--font-accent), cursive;
+  font-weight: 500;
+  font-size: 1.8rem;
+  padding: 0 0.3rem;
+}
+
 .formCard {
   background: white;
   border-radius: 12px;
