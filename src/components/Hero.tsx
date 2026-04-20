@@ -25,7 +25,7 @@ export default function Hero({ items }: HeroProps) {
           if (index === bgIndex) {
             vid.currentTime = 0;
             vid.play().catch(() => {
-                // Ignore play errors (e.g. autoplay prevention)
+              // Ignore play errors (e.g. autoplay prevention)
             });
           } else {
             vid.pause();
@@ -59,9 +59,9 @@ export default function Hero({ items }: HeroProps) {
           <video
             key={item}
             ref={(el) => {
-                if (el) {
-                    videoRefs.current[index] = el;
-                }
+              if (el) {
+                videoRefs.current[index] = el;
+              }
             }}
             src={item}
             className={`${styles.backgroundLayer} ${index === bgIndex ? styles.active : ''}`}
@@ -69,6 +69,14 @@ export default function Hero({ items }: HeroProps) {
             playsInline
             preload="auto"
             onEnded={() => setBgIndex((index + 1) % items.length)}
+            onTimeUpdate={(e) => {
+              const vid = e.currentTarget;
+              // Nếu đang là video hiện tại và phát tới đoạn cách 2s cuối cùng -> sang slide kế tiếp. 
+              // Cắt ngắn đuôi video ngay trên frontend.
+              if (index === bgIndex && vid.duration && vid.currentTime >= vid.duration - 1.0) {
+                setBgIndex((index + 1) % items.length);
+              }
+            }}
           />
         ) : (
           <Image
