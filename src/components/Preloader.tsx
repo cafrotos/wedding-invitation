@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Preloader.module.css';
 
-export default function Preloader() {
+export default function Preloader({ onDone }: { onDone?: () => void }) {
   const [loading, setLoading] = useState(true);
   const [fading, setFading] = useState(false);
 
@@ -9,29 +9,35 @@ export default function Preloader() {
     // Ngăn chặn cuộn trang khi đang loading
     document.body.style.overflow = 'hidden';
 
+    // Đếm thời gian bắt đầu render để đảm bảo preloader hiện tối thiểu 3 giây
+    const startTime = Date.now();
+
     const handleLoad = () => {
-      // Thêm độ trễ nhỏ (1s) để màn hình preloader hiện diện đủ lâu, tránh chớp nhoáng
+      const elapsed = Date.now() - startTime;
+      const remainingTime = Math.max(0, 3000 - elapsed); // Chờ ít nhất 3s
+
       setTimeout(() => {
         setFading(true);
         setTimeout(() => {
           setLoading(false);
           document.body.style.overflow = '';
+          if (onDone) onDone(); // Báo cho WeddingPage biết đã load xong
         }, 800); // 800ms khớp với thời gian transition fadeOut
-      }, 1000);
+      }, remainingTime);
     };
 
     if (document.readyState === 'complete') {
       handleLoad();
     } else {
       window.addEventListener('load', handleLoad);
-      // Fallback sau 5s nếu load event bị kẹt
-      const fallback = setTimeout(handleLoad, 5000);
+      // Fallback sau 8s nếu load event bị kẹt (phòng hờ ảnh quá nặng)
+      const fallback = setTimeout(handleLoad, 8000);
       return () => {
         window.removeEventListener('load', handleLoad);
         clearTimeout(fallback);
       };
     }
-  }, []);
+  }, [onDone]);
 
   if (!loading) return null;
 

@@ -65,10 +65,9 @@ export default function ThankYou({ bgImage }: ThankYouProps) {
           </p>
           <p className={styles.withLove}>With Love ♥</p>
         </div>
-
-        <div className={`animate-on-scroll ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.4s', position: "absolute", bottom: 20 }}>
-          <p className={styles.footer}>© 2026 {weddingConfig.groom.name} & {weddingConfig.bride.name}</p>
-        </div>
+      </div>
+      <div className={`animate-on-scroll ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.4s', position: "absolute", bottom: 20, color: "white" }}>
+        <p className={styles.footer}>© 2026 {weddingConfig.groom.name} & {weddingConfig.bride.name}</p>
       </div>
     </section>
   );

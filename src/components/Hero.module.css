@@ -22,6 +22,21 @@
   opacity: 1;
 }
 
+@media (min-width: 768px) {
+
+  /* Đối với máy tính (màn hình ngang rộng), video thường bị cắt trên/dưới. 
+     Thuộc tính này ép video hiển thị phần dưới (cách đáy 20% tức là tọa độ dọc 80%) */
+  video.backgroundLayer {
+    object-position: center 90%;
+    /* Tối ưu độ nét và hiệu năng */
+    image-rendering: -webkit-optimize-contrast;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    filter: contrast(1.02) brightness(1.02);
+  }
+}
+
 .overlay {
   position: absolute;
   top: 0;

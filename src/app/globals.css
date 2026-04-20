@@ -44,6 +44,11 @@ body {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scrollbar-width: none;
+  /* Ép trình duyệt render sắc nét bằng GPU, ngăn chặn vệt hở sub-pixel */
+  transform: translateZ(0);
+  will-change: transform;
+  /* Phủ màu trùng với nền trang để "vô hiệu hóa" vệt hở 1px nếu có lọt ra */
+  background-color: var(--color-bg);
 }
 
 .snap-container::-webkit-scrollbar {
@@ -62,6 +67,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* Trình duyệt khử răng cưa và render biên chính xác hơn */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  outline: 1px solid transparent;
 }
 
 /* auto-height sections (Love Story, Location): không snap, tự do cuộn */

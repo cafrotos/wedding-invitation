@@ -65,8 +65,10 @@
   justify-content: space-between;
   width: 100%;
   gap: 0.5rem;
-  flex: 1; /* Cho phép giãn ra nếu cần */
-  max-height: 50vh; /* Giới hạn độ lớn max để ko tràn form */
+  flex: 1;
+  /* Cho phép giãn ra nếu cần */
+  max-height: 50vh;
+  /* Giới hạn độ lớn max để ko tràn form */
   margin-bottom: 1rem;
 }
 
@@ -111,7 +113,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-20px); /* Bù trừ khoảng không của text ở dưới */
+  transform: translateY(-20px);
+  /* Bù trừ khoảng không của text ở dưới */
 }
 
 /* ── Tên đôi – font viết tay ── */
@@ -124,6 +127,7 @@
 }
 
 @media (min-width: 400px) {
+
   .nameGroom,
   .nameBride {
     font-size: 1.8rem;

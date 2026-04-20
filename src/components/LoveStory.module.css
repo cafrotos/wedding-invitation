@@ -52,7 +52,8 @@
    ══════════════════════════════════════ */
 .signatureVideo {
   position: relative;
-  width: 60%;          /* Không full-width vì video dọc */
+  width: 60%;
+  /* Không full-width vì video dọc */
   max-width: 400px;
   margin: 0 auto 3rem;
   aspect-ratio: 9/16;
@@ -75,12 +76,10 @@
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 2rem;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.1) 35%,
-    transparent 100%
-  );
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.1) 35%,
+      transparent 100%);
 }
 
 .signatureText {
@@ -99,6 +98,7 @@
     max-width: 380px;
     margin-bottom: 4rem;
   }
+
   .signatureText {
     font-size: 1.6rem;
   }
@@ -137,6 +137,7 @@
   .textInterstitial {
     padding: 4rem 2rem;
   }
+
   .storyText {
     font-size: 1.25rem;
   }
@@ -163,7 +164,8 @@
 }
 
 .imageItem {
-  position: relative; /* Bắt buộc để Next.js Image fill hoạt động */
+  position: relative;
+  /* Bắt buộc để Next.js Image fill hoạt động */
   overflow: hidden;
   background-color: #f0ebe5;
 }
@@ -190,6 +192,7 @@
   max-width: 55%;
   margin: 0 auto;
 }
+
 .layout_portraitHero .imageItem {
   aspect-ratio: 2/3;
 }
@@ -198,6 +201,7 @@
 .layout_landscapeHero {
   grid-template-columns: 1fr;
 }
+
 .layout_landscapeHero .imageItem {
   aspect-ratio: 3/2;
 }
@@ -206,6 +210,7 @@
 .layout_portraitDuo {
   grid-template-columns: 1fr 1fr;
 }
+
 .layout_portraitDuo .imageItem {
   aspect-ratio: 2/3;
 }
@@ -214,6 +219,7 @@
 .layout_portraitTrio {
   grid-template-columns: 1fr 1fr 1fr;
 }
+
 .layout_portraitTrio .imageItem {
   aspect-ratio: 2/3;
 }
@@ -222,32 +228,42 @@
 .layout_asymTrio {
   grid-template-columns: 1.3fr 1fr;
   grid-template-rows: 1fr 1fr;
-  aspect-ratio: 2/3; /* Container có chiều cao xác định để grid rows resolve */
+  aspect-ratio: 2/3;
+  /* Container có chiều cao xác định để grid rows resolve */
 }
+
 .layout_asymTrio .imageItem:first-child {
-  grid-row: span 2; /* Ảnh lớn chiếm cả 2 hàng */
+  grid-row: span 2;
+  /* Ảnh lớn chiếm cả 2 hàng */
 }
+
 .layout_asymTrio .imageItem {
-  aspect-ratio: auto; /* Kế thừa từ container */
-  min-height: 0; /* Xóa fallback để tránh override */
+  aspect-ratio: auto;
+  /* Kế thừa từ container */
+  min-height: 0;
+  /* Xóa fallback để tránh override */
 }
 
 /* 6. FILM STRIP — Cắt ảnh dọc thành dải phim ngang nhưng không quá nhỏ */
 .layout_filmStrip {
   grid-template-columns: 1fr 1fr;
 }
+
 .layout_filmStrip .imageItem {
-  aspect-ratio: 4/3; /* Dạng crop ngang nghệ thuật */
+  aspect-ratio: 4/3;
+  /* Dạng crop ngang nghệ thuật */
 }
+
 /* Focus lên phần trên của ảnh để tránh mất đầu / khuôn mặt */
 .layout_filmStrip .storyMedia {
-  object-position: center 15%; 
+  object-position: center 15%;
 }
 
 /* 7. GRID 4 — 2×2 */
 .layout_grid4 {
   grid-template-columns: 1fr 1fr;
 }
+
 .layout_grid4 .imageItem {
   aspect-ratio: 3/4;
 }
@@ -282,7 +298,8 @@
   /* Asym trio cân đối trên desktop */
   .layout_asymTrio {
     grid-template-columns: 1.4fr 1fr;
-    aspect-ratio: 4/3; /* Trên desktop rộng hơn */
+    aspect-ratio: 4/3;
+    /* Trên desktop rộng hơn */
   }
 
   /* Film strip giữ cảm giác widescreen nghệ thuật trên desktop */

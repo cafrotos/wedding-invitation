@@ -7,9 +7,10 @@ import Image from 'next/image';
 
 interface HeroProps {
   items: string[];
+  isReady?: boolean;
 }
 
-export default function Hero({ items }: HeroProps) {
+export default function Hero({ items, isReady = true }: HeroProps) {
   const [bgIndex, setBgIndex] = useState(0);
   const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
@@ -22,8 +23,8 @@ export default function Hero({ items }: HeroProps) {
       if (isVideo) {
         const vid = videoRefs.current[index];
         if (vid) {
-          if (index === bgIndex) {
-            vid.currentTime = 0;
+          // Chỉ play khi Preloader đã xong (isReady = true)
+          if (index === bgIndex && isReady) {
             vid.play().catch(() => {
               // Ignore play errors (e.g. autoplay prevention)
             });
@@ -40,13 +41,13 @@ export default function Hero({ items }: HeroProps) {
     const isVideo = currentItem?.toLowerCase().endsWith('.mp4');
 
     // Chuyển ảnh sau 3s, nếu là video thì để event onEnded lo
-    if (!isVideo) {
+    if (!isVideo && isReady) {
       const timeout = setTimeout(() => {
         setBgIndex((prevIndex) => (prevIndex + 1) % items.length);
       }, 3000);
       return () => clearTimeout(timeout);
     }
-  }, [bgIndex, items]);
+  }, [bgIndex, items, isReady]);
 
   if (!items || items.length === 0) return null;
 
