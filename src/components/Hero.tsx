@@ -8,9 +8,10 @@ import Image from 'next/image';
 interface HeroProps {
   items: string[];
   isReady?: boolean;
+  side: 'bride' | 'groom';
 }
 
-export default function Hero({ items, isReady = true }: HeroProps) {
+export default function Hero({ items, isReady = true, side }: HeroProps) {
   const [bgIndex, setBgIndex] = useState(0);
   const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
@@ -101,7 +102,7 @@ export default function Hero({ items, isReady = true }: HeroProps) {
           <p className={styles.loveBegins}>Our love begins</p>
         </div>
         <div className="animate-on-scroll visible" style={{ transitionDelay: '0.4s' }}>
-          <p className={styles.weddingDate}>03 . 05 . 2026</p>
+          <p className={styles.weddingDate}>{side === 'bride' ? '01 . 05 . 2026' : '03 . 05 . 2026'}</p>
         </div>
         <div className="animate-on-scroll visible" style={{ transitionDelay: '0.6s' }}>
           <p className={styles.coupleNames}>Minh Phương & Ngân Hà</p>

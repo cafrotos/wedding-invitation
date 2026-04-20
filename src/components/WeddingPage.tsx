@@ -17,6 +17,8 @@ const ThankYou = dynamic(() => import('@/components/ThankYou'), { ssr: true });
 
 interface WeddingPageProps {
   guestName: string | null;
+  side: 'bride' | 'groom';
+  isBusRegistered: boolean;
   heroItems: string[];
   storyItems: string[];
   calendarBg: string | null;
@@ -30,12 +32,12 @@ export default function WeddingPage(props: WeddingPageProps) {
     <>
       <Preloader onDone={() => setIsPreloaderDone(true)} />
       <main className="snap-container">
-        <Hero items={props.heroItems} isReady={isPreloaderDone} />
-        <Invitation guestName={props.guestName} />
+        <Hero items={props.heroItems} isReady={isPreloaderDone} side={props.side} />
+        <Invitation guestName={props.guestName} side={props.side} />
         <LoveStory items={props.storyItems} />
-        <SaveTheDate calendarBg={props.calendarBg} />
-        <Location />
-        <RSVPForm guestName={props.guestName} />
+        <SaveTheDate calendarBg={props.calendarBg} side={props.side} />
+        <Location side={props.side} />
+        <RSVPForm guestName={props.guestName} side={props.side} isBusRegistered={props.isBusRegistered} />
         <WeddingGift />
         <ThankYou bgImage={props.thankYouBg} />
       </main>

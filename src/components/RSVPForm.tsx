@@ -7,11 +7,13 @@ import { CheckCircle2, Heart } from 'lucide-react';
 
 interface RSVPFormProps {
   guestName: string | null;
+  side: 'bride' | 'groom';
+  isBusRegistered: boolean;
 }
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export default function RSVPForm({ guestName }: RSVPFormProps) {
+export default function RSVPForm({ guestName, side, isBusRegistered }: RSVPFormProps) {
   const { ref, isVisible } = useIntersectionObserver(0.2);
 
   const [status, setStatus] = useState<Status>("idle");
@@ -47,6 +49,8 @@ export default function RSVPForm({ guestName }: RSVPFormProps) {
           attending: formData.attending,
           guests: formData.guests,
           message: formData.message,
+          side: side, // Khách nhà trai/gái
+          bus: isBusRegistered ? "yes" : "no", // Đi xe nhà trai
         }),
       });
 

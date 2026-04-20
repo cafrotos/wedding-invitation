@@ -9,15 +9,25 @@ import Image from 'next/image';
 
 interface SaveTheDateProps {
   calendarBg: string | null;
+  side: 'bride' | 'groom';
 }
 
-export default function SaveTheDate({ calendarBg }: SaveTheDateProps) {
+export default function SaveTheDate({ calendarBg, side }: SaveTheDateProps) {
   const { ref, isVisible } = useIntersectionObserver();
   
-  const weddingDate = weddingConfig.date;
+  // Lấy ngày cưới tương ứng (Nhà Gái: 01/05, Nhà Trai: 03/05)
+  const weddingDate = side === 'bride' ? weddingConfig.locations.bride.date : weddingConfig.locations.groom.date;
   const year = weddingDate.getFullYear();
   const month = weddingDate.getMonth();
   const targetDate = weddingDate.getDate();
+  
+  // Format để hiển thị text bên dưới
+  const formatDateString = (date: Date) => {
+    const weekdays = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+    const dd = String(date.getDate()).padStart(2, '0');
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    return `${weekdays[date.getDay()]}, ${dd}/${mm}/${date.getFullYear()}`;
+  };
 
   // Calendar generation logic
   const firstDay = new Date(year, month, 1).getDay();
@@ -76,7 +86,7 @@ export default function SaveTheDate({ calendarBg }: SaveTheDateProps) {
         </div>
 
         <div className={`${styles.conclusion} animate-on-scroll ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.4s' }}>
-          <span>Chủ Nhật, 03/05/2026</span>
+          <span>{formatDateString(weddingDate)}</span>
         </div>
       </div>
     </section>

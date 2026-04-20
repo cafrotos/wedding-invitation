@@ -9,10 +9,15 @@ import Image from 'next/image';
 
 interface InvitationProps {
   guestName: string | null;
+  side: 'bride' | 'groom';
 }
 
-export default function Invitation({ guestName }: InvitationProps) {
+export default function Invitation({ guestName, side }: InvitationProps) {
   const { ref, isVisible } = useIntersectionObserver();
+
+  // Dữ liệu tùy biến theo bên nhà
+  const ceremonyTitle = side === 'bride' ? 'lễ vu quy' : 'lễ thành hôn';
+  const ceremonyDate = side === 'bride' ? '01/05/2026' : '03/05/2026';
 
   return (
     <section className={`auto-height-section ${styles.invitationSection}`} id="invitation">
@@ -24,7 +29,8 @@ export default function Invitation({ guestName }: InvitationProps) {
         <div className={`${styles.invitationText} animate-on-scroll ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.15s' }}>
           <p>Trân trọng kính mời <strong className={styles.guestHighlight}>{guestName || "Bạn"}</strong></p>
           <p>đến chung vui cùng gia đình chúng mình</p>
-          <p>trong ngày lễ thành hôn</p>
+          <p>trong ngày <span style={{ textTransform: 'uppercase', fontWeight: 600 }}>{ceremonyTitle}</span></p>
+          <p style={{ marginTop: '0.5rem', fontSize: '1.2rem', fontWeight: 500, color: 'var(--color-accent)' }}>{ceremonyDate}</p>
         </div>
 
         {/* 2 cột: Nhà trai | Nhà gái */}

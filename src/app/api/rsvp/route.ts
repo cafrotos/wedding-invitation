@@ -15,6 +15,7 @@ export async function POST(request: NextRequest) {
       const response = await fetch(weddingConfig.googleSheetsWebAppUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        redirect: 'follow', // Cực kì quan trọng để Google Apps Script hoạt động từ server-side
         body: JSON.stringify({
           ...data,
           timestamp: new Date().toISOString(),
@@ -22,9 +23,11 @@ export async function POST(request: NextRequest) {
         }),
       });
 
+      const resultText = await response.text();
+      console.log("Google Sheets Response:", resultText);
+
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Script failed: ${response.status} - ${errorText}`);
+        throw new Error(`Script failed: ${response.status} - ${resultText}`);
       }
     } else {
        console.warn("MOCK RSVP: No Google Sheets URL provided", data);

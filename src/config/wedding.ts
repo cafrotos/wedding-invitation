@@ -85,5 +85,5 @@ export const weddingConfig = {
   },
 
   // ===== Google Sheets =====
-  googleSheetsWebAppUrl: "https://script.google.com/macros/s/AKfycbzqREoELUUVo_lrgH_hxVcJYJlr9P4q2yp5O6G5pMUx7jO5M0IQ_onJ4oiaspcUvsyZrA/exec",
+  googleSheetsWebAppUrl: "https://script.google.com/macros/s/AKfycbyoPEdjSoOhMVs8dhxktOAHB3kyEKbf3Fn8SWKNlOE3VjqBTISeQTDDL5wIaRuXi5d-/exec",
 };
