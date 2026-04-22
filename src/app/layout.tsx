@@ -23,6 +23,7 @@ const dancingScript = Dancing_Script({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://wedding-nmp-nha.vercel.app'), // THAY BẰNG LINK THẬT CỦA BẠN
   title: `${weddingConfig.groom.name} & ${weddingConfig.bride.name} — Wedding`,
   description: "Chúng mình mong được đón tiếp bạn trong ngày trọng đại.",
   openGraph: {
@@ -32,8 +33,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/openGraph.jpeg',
-        width: 3990,
-        height: 5990,
+        width: 1200,
+        height: 1800,
         alt: `${weddingConfig.groom.name} & ${weddingConfig.bride.name} Wedding`,
       },
     ],
