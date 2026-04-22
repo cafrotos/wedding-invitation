@@ -81,8 +81,6 @@ export default function Invitation({ guestName, side }: InvitationProps) {
             <p className={styles.familyParent}>{weddingConfig.bride.family.motherName}</p>
           </div>
         </div>
-        {/* Divider */}
-        <div className="goldDivider animate-on-scroll visible">─── ♥ ───</div>
       </div>
     </section>
   );
