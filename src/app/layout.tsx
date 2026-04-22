@@ -25,6 +25,27 @@ const dancingScript = Dancing_Script({
 export const metadata: Metadata = {
   title: `${weddingConfig.groom.name} & ${weddingConfig.bride.name} — Wedding`,
   description: "Chúng mình mong được đón tiếp bạn trong ngày trọng đại.",
+  openGraph: {
+    title: `${weddingConfig.groom.name} & ${weddingConfig.bride.name} — Wedding Invitation`,
+    description: "Chúng mình mong được đón tiếp bạn trong ngày trọng đại.",
+    siteName: 'Wedding Invitation',
+    images: [
+      {
+        url: '/openGraph.jpeg',
+        width: 3990,
+        height: 5990,
+        alt: `${weddingConfig.groom.name} & ${weddingConfig.bride.name} Wedding`,
+      },
+    ],
+    locale: 'vi_VN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${weddingConfig.groom.name} & ${weddingConfig.bride.name} — Wedding`,
+    description: "Chúng mình mong được đón tiếp bạn trong ngày trọng đại.",
+    images: ['/openGraph.jpeg'],
+  },
 };
 
 export default function RootLayout({
