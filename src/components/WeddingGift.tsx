@@ -12,7 +12,7 @@ export default function WeddingGift() {
   const [activeTab, setActiveTab] = useState<"groom" | "bride">("groom");
   const [copied, setCopied] = useState(false);
 
-  const qrConfig = weddingConfig.qrCodes[activeTab];
+  const qrConfig = weddingConfig[activeTab].qrCode;
 
   // https://vietqr.net/portal/thu-vien-api/qr-code-generation.html
   const qrUrl = `https://img.vietqr.io/image/${qrConfig.bin}-${qrConfig.accountNo}-compact2.jpg?addInfo=${encodeURIComponent(qrConfig.message)}&accountName=${encodeURIComponent(qrConfig.accountName)}`;

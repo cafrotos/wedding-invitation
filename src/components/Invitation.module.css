@@ -16,7 +16,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   text-align: center;
 }
 
@@ -27,6 +27,31 @@
   line-height: 1.6;
   color: var(--color-text);
   margin-bottom: 1.2rem;
+}
+
+/* ── Ceremony header — title lớn ── */
+.ceremonyHeader {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.ceremonyTitle {
+  font-family: var(--font-accent), cursive;
+  font-size: clamp(2rem, 12vw, 4.8rem);
+  font-weight: 400;
+  color: var(--color-primary);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
+
+.ceremonyDate {
+  margin-top: 0.5rem;
+  font-family: var(--font-body), serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: 0.06em;
 }
 
 .guestHighlight {
@@ -67,7 +92,7 @@
   gap: 0.5rem;
   flex: 1;
   /* Cho phép giãn ra nếu cần */
-  max-height: 50vh;
+  max-height: fit-content;
   /* Giới hạn độ lớn max để ko tràn form */
   margin-bottom: 1rem;
 }
@@ -77,7 +102,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
   justify-content: center;
 }
 

@@ -16,7 +16,7 @@ export default function SaveTheDate({ calendarBg, side }: SaveTheDateProps) {
   const { ref, isVisible } = useIntersectionObserver();
   
   // Lấy ngày cưới tương ứng (Nhà Gái: 01/05, Nhà Trai: 03/05)
-  const weddingDate = side === 'bride' ? weddingConfig.locations.bride.date : weddingConfig.locations.groom.date;
+  const weddingDate = side === 'bride' ? weddingConfig.bride.location.date : weddingConfig.groom.location.date;
   const year = weddingDate.getFullYear();
   const month = weddingDate.getMonth();
   const targetDate = weddingDate.getDate();

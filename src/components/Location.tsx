@@ -12,7 +12,8 @@ interface LocationProps {
 
 export default function Location({ side }: LocationProps) {
   const { ref, isVisible } = useIntersectionObserver(0.1);
-  const { groom, bride } = weddingConfig.locations;
+  const groom = weddingConfig.groom.location;
+  const bride = weddingConfig.bride.location;
 
   // Format date helper
   const formatDate = (date: Date) => {
