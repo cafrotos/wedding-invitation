@@ -6,7 +6,7 @@
 // ─── Shared (dùng chung cho cả hai bên) ─────────────────────
 const shared = {
   googleSheetsWebAppUrl:
-    "https://script.google.com/macros/s/AKfycbyoPEdjSoOhMVs8dhxktOAHB3kyEKbf3Fn8SWKNlOE3VjqBTISeQTDDL5wIaRuXi5d-/exec",
+    "https://script.google.com/macros/s/AKfycbzja0LxoCJOr3LWhH8Y5qpW4PmgIEkNXqgYCa9ueM7l3iR98sVOvJzYCq_YCE6TgZq_Vw/exec",
 };
 
 // ─── Groom side config ───────────────────────────────────────
