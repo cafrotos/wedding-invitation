@@ -36,7 +36,8 @@ export default function Invitation({ guestName, side }: InvitationProps) {
 
         <div className={`${styles.invitationText} animate-on-scroll ${isVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.15s' }}>
           <p>Trân trọng kính mời <strong className={styles.guestHighlight}>{guestName || "Bạn"}</strong></p>
-          <p>tới dự bữa cơm thân mật chung vui cùng chúng mình vào lúc</p>
+          <p>tới dự bữa cơm thân mật</p>
+          <p>chung vui cùng chúng mình vào lúc</p>
           <p style={{ marginTop: '0.5rem', fontSize: '1.2rem', fontWeight: 500, color: 'var(--color-accent)' }}>{ceremonyPartyDate}</p>
         </div>
 
