@@ -60,7 +60,7 @@ export default function RSVPForm({ guestName, side, isBusRegistered }: RSVPFormP
           transport: formData.attending === "yes" ? formData.transport : "",
           message: formData.message,
           side: side, // Khách nhà trai/gái
-          bus: isBusRegistered ? "yes" : "no", // Đi xe nhà trai
+          bus: (isBusRegistered || (formData.transport === "family-bus" && formData.attending === "yes")) ? "yes" : "no", // Đi xe nhà trai
         }),
       });
 
