@@ -16,10 +16,10 @@ export default function Invitation({ guestName, side }: InvitationProps) {
   const { ref, isVisible } = useIntersectionObserver();
 
   // Dữ liệu tùy biến theo bên nhà
+  const sideConfig = side === 'bride' ? weddingConfig.bride : weddingConfig.groom;
   const ceremonyTitle = side === 'bride' ? 'lễ vu quy' : 'lễ thành hôn';
-  const ceremonyDate = side === 'bride' ? 'Thứ 6 | 09:00 01/05/2026' : 'Chủ nhật | 08:00 03/05/2026';
-
-  const ceremonyPartyDate = side === 'bride' ? 'Thứ 6 | 16:00 01/05/2026' : 'Chủ nhật | 09:30 03/05/2026';
+  const ceremonyDate = sideConfig.ceremonyDate;
+  const ceremonyPartyDate = sideConfig.ceremonyPartyDate;
 
   return (
     <section className={`auto-height-section ${styles.invitationSection}`} id="invitation">

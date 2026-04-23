@@ -27,12 +27,16 @@ interface WeddingPageProps {
 
 export default function WeddingPage(props: WeddingPageProps) {
   const [isPreloaderDone, setIsPreloaderDone] = useState(false);
+  const [userInteracted, setUserInteracted] = useState(false);
 
   return (
     <>
-      <Preloader onDone={() => setIsPreloaderDone(true)} />
+      <Preloader
+        onDone={() => setIsPreloaderDone(true)}
+        onUserInteract={() => setUserInteracted(true)}
+      />
       <main className="snap-container">
-        <Hero items={props.heroItems} isReady={isPreloaderDone} side={props.side} />
+        <Hero items={props.heroItems} isReady={isPreloaderDone} side={props.side} userInteracted={userInteracted} />
         <Invitation guestName={props.guestName} side={props.side} />
         <LoveStory items={props.storyItems} />
         <SaveTheDate calendarBg={props.calendarBg} side={props.side} />

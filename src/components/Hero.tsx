@@ -9,9 +9,10 @@ interface HeroProps {
   items: string[];
   isReady?: boolean;
   side: 'bride' | 'groom';
+  userInteracted?: boolean;
 }
 
-export default function Hero({ items, isReady = true, side }: HeroProps) {
+export default function Hero({ items, isReady = true, side, userInteracted = false }: HeroProps) {
   const [bgIndex, setBgIndex] = useState(0);
   const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
@@ -48,7 +49,7 @@ export default function Hero({ items, isReady = true, side }: HeroProps) {
       }, 3000);
       return () => clearTimeout(timeout);
     }
-  }, [bgIndex, items, isReady]);
+  }, [bgIndex, items, isReady, userInteracted]);
 
   if (!items || items.length === 0) return null;
 

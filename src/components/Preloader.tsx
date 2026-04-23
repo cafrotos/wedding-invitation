@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Preloader.module.css';
 
-export default function Preloader({ onDone }: { onDone?: () => void }) {
+export default function Preloader({ onDone, onUserInteract }: { onDone?: () => void; onUserInteract?: () => void }) {
   const [loading, setLoading] = useState(true);
   const [fading, setFading] = useState(false);
+  const [interacted, setInteracted] = useState(false);
+  const interactedRef = useRef(false);
 
   useEffect(() => {
     // Ngăn chặn cuộn trang khi đang loading
@@ -39,6 +41,22 @@ export default function Preloader({ onDone }: { onDone?: () => void }) {
     }
   }, [onDone]);
 
+  // Bắt tương tác của user để unlock autoplay (1 lần duy nhất)
+  useEffect(() => {
+    const handleInteract = () => {
+      if (interactedRef.current) return;
+      interactedRef.current = true;
+      setInteracted(true);
+      if (onUserInteract) onUserInteract();
+    };
+    window.addEventListener('touchstart', handleInteract, { once: true, passive: true });
+    window.addEventListener('click', handleInteract, { once: true });
+    return () => {
+      window.removeEventListener('touchstart', handleInteract);
+      window.removeEventListener('click', handleInteract);
+    };
+  }, [onUserInteract]);
+
   if (!loading) return null;
 
   return (
@@ -53,6 +71,11 @@ export default function Preloader({ onDone }: { onDone?: () => void }) {
           <div className={styles.progressBar}></div>
         </div>
         <p className={styles.loadingText}>The wedding of Minh Phuong & Ngan Ha</p>
+
+        {/* Hint chạm để unlock autoplay */}
+        <p className={`${styles.touchHint} ${interacted ? styles.touchHintDone : ''}`}>
+          {interacted ? '✓ Đã kết nối' : '✦ Chạm để tải nhanh hơn'}
+        </p>
       </div>
     </div>
   );

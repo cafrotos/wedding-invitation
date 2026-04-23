@@ -3,6 +3,8 @@
 //  Mỗi mục được chia rõ groom / bride — không trùng lặp.
 // ============================================================
 
+
+
 // ─── Shared (dùng chung cho cả hai bên) ─────────────────────
 const shared = {
   googleSheetsWebAppUrl:
@@ -22,10 +24,14 @@ const groom = {
     motherName: "Bà Phạm Thị Đông",
   },
 
+  // Ngày giờ lễ
+  ceremonyDate: "08:00 | Chủ nhật, 03/05/2026",
+  ceremonyPartyDate: "09:30 | Chủ nhật, 03/05/2026",
+
   // Địa điểm tổ chức phía nhà trai
   location: {
     title: "Lễ Thành Hôn — Nhà Trai",
-    date: new Date("2026-05-03T08:00:00"),
+    date: new Date("2026-05-03T08:00:00+07:00"),
     name: "Tư gia nhà trai",
     address: "Thôn Hữu Tiệm, xã Bình Thanh, tỉnh Hưng Yên",
     mapsIframe:
@@ -100,10 +106,14 @@ const bride = {
     motherName: "Bà Nguyễn Thị Xuân",
   },
 
+  // Ngày giờ lễ
+  ceremonyDate: "09:00 | Thứ 6, 01/05/2026",
+  ceremonyPartyDate: "16:00 | Thứ 6, 01/05/2026",
+
   // Địa điểm tổ chức phía nhà gái
   location: {
     title: "Lễ Vu Quy — Nhà Gái",
-    date: new Date("2026-05-01T08:00:00"),
+    date: new Date("2026-05-01T08:00:00+07:00"),
     name: "Tư gia nhà gái",
     address: "SVĐ Thanh Lâm, xã Bích Hào, tỉnh Nghệ An",
     mapsIframe:
