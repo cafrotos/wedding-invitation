@@ -70,12 +70,7 @@ export default function Preloader({ onDone, onUserInteract }: { onDone?: () => v
         <div className={styles.progressContainer}>
           <div className={styles.progressBar}></div>
         </div>
-        <p className={styles.loadingText}>The wedding of Minh Phuong & Ngan Ha</p>
-
-        {/* Hint chạm để unlock autoplay */}
-        <p className={`${styles.touchHint} ${interacted ? styles.touchHintDone : ''}`}>
-          {interacted ? '✓ Đã kết nối' : '✦ Chạm để tải nhanh hơn'}
-        </p>
+        <p className={styles.loadingText}>Wedding invitation</p>
       </div>
     </div>
   );
