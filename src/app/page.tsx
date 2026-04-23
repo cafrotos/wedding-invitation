@@ -7,7 +7,18 @@ export default async function Home({
 }) {
   const params = await searchParams;
   const guestParam = params.guest;
-  const guestName = typeof guestParam === 'string' && guestParam.trim() !== '' ? guestParam : null;
+  const rawGuest = typeof guestParam === 'string' ? guestParam.trim() : '';
+  // Xử lý double-encode: nếu còn chứa %XX sau khi Next.js đã decode 1 lần
+  let guestName: string | null = null;
+  if (rawGuest) {
+    try {
+      // Thử decode thêm lần 2 nếu cần (trường hợp link bị encode 2 lần)
+      const decoded = /%[0-9A-Fa-f]{2}/.test(rawGuest) ? decodeURIComponent(rawGuest) : rawGuest;
+      guestName = decoded.trim() || null;
+    } catch {
+      guestName = rawGuest || null;
+    }
+  }
 
   // Trích xuất thông tin bên nhà (trai/gái) và đăng ký xe
   const sideParam = params.from || params.side; // Hỗ trợ cả ?from= và ?side=
