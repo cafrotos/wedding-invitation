@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './LoveStory.module.css';
 import { weddingConfig } from '@/config/wedding';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
@@ -94,9 +94,24 @@ function TextInterstitial({ text }: { text: string }) {
 /* ── Signature Video (DỌC) ── */
 function SignatureVideo({ src }: { src: string }) {
   const { ref, isVisible } = useIntersectionObserver(0.2);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Fallback: khi autoplay bị chặn, chạm vào video để play
+  const handleTap = () => {
+    const vid = videoRef.current;
+    if (vid && vid.paused) {
+      vid.play().catch(() => {});
+    }
+  };
+
   return (
-    <div ref={ref} className={`${styles.signatureVideo} animate-on-scroll ${isVisible ? 'visible' : ''}`}>
+    <div
+      ref={ref}
+      className={`${styles.signatureVideo} animate-on-scroll ${isVisible ? 'visible' : ''}`}
+      onClick={handleTap}
+    >
       <video
+        ref={videoRef}
         src={src}
         autoPlay
         muted

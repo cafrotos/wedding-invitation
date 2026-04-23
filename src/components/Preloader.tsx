@@ -32,8 +32,8 @@ export default function Preloader({ onDone, onUserInteract }: { onDone?: () => v
       handleLoad();
     } else {
       window.addEventListener('load', handleLoad);
-      // Fallback sau 8s nếu load event bị kẹt (phòng hờ ảnh quá nặng)
-      const fallback = setTimeout(handleLoad, 8000);
+      // Fallback sau 3s nếu load event bị kẹt (phòng hờ ảnh quá nặng)
+      const fallback = setTimeout(handleLoad, 3000);
       return () => {
         window.removeEventListener('load', handleLoad);
         clearTimeout(fallback);

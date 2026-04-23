@@ -25,10 +25,10 @@ export default function Hero({ items, isReady = true, side, userInteracted = fal
       if (isVideo) {
         const vid = videoRefs.current[index];
         if (vid) {
-          // Chỉ play khi Preloader đã xong (isReady = true)
           if (index === bgIndex && isReady) {
             vid.play().catch(() => {
-              // Ignore play errors (e.g. autoplay prevention)
+              // Autoplay bị chặn (pin yếu / browser policy) → skip sang slide tiếp
+              setBgIndex((prev) => (prev + 1) % items.length);
             });
           } else {
             vid.pause();
