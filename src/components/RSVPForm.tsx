@@ -175,7 +175,7 @@ export default function RSVPForm({ guestName, side, isBusRegistered }: RSVPFormP
                   <label>Lời chúc</label>
                   <textarea
                     name="message"
-                    rows={4}
+                    rows={3}
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Gửi lời chúc đến cô dâu chú rể nhé..."
