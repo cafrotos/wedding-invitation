@@ -35,8 +35,8 @@ const groom = {
     name: "Tư gia nhà trai",
     address: "Thôn Hữu Tiệm, xã Bình Thanh, tỉnh Hưng Yên",
     mapsIframe:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d238.0556918207753!2d106.44572341064327!3d20.3539587609862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135fe9061f4cf99%3A0x1926a67b2a9a97c8!2zQ2FvIE3huqFpLCBRdWFuZyBUcnVuZywgS2nhur9uIFjGsMahbmcsIEjGsG5nIFnDqm4sIFZp4buHdCBOYW0!5e1!3m2!1svi!2s!4v1776648189807!5m2!1svi!2s",
-    mapsLink: "https://maps.app.goo.gl/zUMvVSo6gP52oyke6",
+      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d774.5610509640029!2d106.44601128237524!3d20.353894879389514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDIxJzE0LjMiTiAxMDbCsDI2JzQ1LjUiRQ!5e1!3m2!1svi!2s!4v1776998729068!5m2!1svi!2s",
+    mapsLink: "https://maps.app.goo.gl/vJsXJJA1PXtEfzi37",
   },
 
   // QR mừng cưới
@@ -118,7 +118,7 @@ const bride = {
     address: "SVĐ Thanh Lâm, xã Bích Hào, tỉnh Nghệ An",
     mapsIframe:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11955.592649571894!2d105.44635500343492!3d18.64448920732938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3139c3000d184567%3A0xc1a5e94c39c5fe4!2zU8OibiBW4bqtbiDEkOG7mW5nIFjDoyBUaGFuaCBMw6Jt!5e1!3m2!1svi!2s!4v1776648538466!5m2!1svi!2s",
-    mapsLink: "https://maps.app.goo.gl/N12foXWsZKpoGuVB7",
+    mapsLink: "https://maps.app.goo.gl/vJsXJJA1PXtEfzi37",
   },
 
   // QR mừng cưới
