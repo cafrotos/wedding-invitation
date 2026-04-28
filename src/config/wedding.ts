@@ -118,7 +118,7 @@ const bride = {
     address: "SVĐ Thanh Lâm, xã Bích Hào, tỉnh Nghệ An",
     mapsIframe:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11955.592649571894!2d105.44635500343492!3d18.64448920732938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3139c3000d184567%3A0xc1a5e94c39c5fe4!2zU8OibiBW4bqtbiDEkOG7mW5nIFjDoyBUaGFuaCBMw6Jt!5e1!3m2!1svi!2s!4v1776648538466!5m2!1svi!2s",
-    mapsLink: "https://maps.app.goo.gl/vJsXJJA1PXtEfzi37",
+    mapsLink: "https://maps.app.goo.gl/nm7Pj5W3Q1h69R4dA",
   },
 
   // QR mừng cưới
