@@ -72,7 +72,7 @@ export default function RSVPForm({ guestName, side, isBusRegistered }: RSVPFormP
   };
 
   return (
-    <section className={`snap-section ${styles.rsvpSection}`} id="rsvp">
+    <section className={`auto-height-section ${styles.rsvpSection}`} id="rsvp">
       <div className={styles.container} ref={ref}>
         <div className={`animate-on-scroll ${isVisible ? 'visible' : ''}`}>
           <h2 className={styles.sectionTitle}>Xác Nhận Tham Dự</h2>
