@@ -27,7 +27,6 @@
 
 html {
   height: 100%;
-  /* Cân nhắc bỏ scroll-behavior: smooth nếu gây giật trên iOS khi dùng Snap */
   scroll-behavior: smooth;
 }
 
@@ -43,7 +42,8 @@ body {
 .snap-container {
   height: 100dvh;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  /* Thay đổi thành proximity để không bị giật ngược về đầu section khi cuộn hụt */
+  scroll-snap-type: y proximity;
   scrollbar-width: none;
   /* GPU acceleration */
   transform: translateZ(0);
@@ -60,7 +60,7 @@ body {
   min-height: 100dvh;
   width: 100%;
   position: relative;
-  /* Loại bỏ overflow-y: auto để nhường quyền cuộn cho container cha */
+  /* Không dùng overflow auto/hidden ở đây để giữ tương thích class và nhường quyền cuộn cho container */
   display: flex;
   flex-direction: column;
   align-items: center;
